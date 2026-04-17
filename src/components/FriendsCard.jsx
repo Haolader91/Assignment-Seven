@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-const FriendsCard = () => {
+const FriendsCard = ({ friends, setFriends }) => {
   const [loading, setLoading] = useState(true);
-  const [friends, setFriends] = useState([]);
 
   useEffect(() => {
     fetch("../../public/FriendsData.json")
