@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TimelineContext } from "../context/store";
 
 const SummaryCard = ({ friends }) => {
+  const { activities } = useContext(TimelineContext);
   const total = friends.length;
 
   const onTrack = friends.filter((f) => f.status === "on-track").length;
 
   const needAttention = friends.filter(
     (f) => f.status === "overdue" || f.status === "almost due",
+  ).length;
+
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+  const interactionsThisMonth = activities.filter((activity) =>
+    activity.date.includes(currentMonth),
   ).length;
 
   return (
@@ -41,9 +48,11 @@ const SummaryCard = ({ friends }) => {
           </div>
 
           <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center">
-            <h2 className="text-3xl font-bold text-emerald-900 mb-2">12</h2>
+            <h2 className="text-3xl font-bold text-emerald-900 mb-2">
+              {interactionsThisMonth}
+            </h2>
             <p className="text-sm font-medium text-slate-500 uppercase tracking-tight">
-              Interactions This Month
+              Interactions {currentMonth}
             </p>
           </div>
         </div>

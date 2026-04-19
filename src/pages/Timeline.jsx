@@ -37,7 +37,7 @@ const Timeline = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-10 min-h-screen">
-      <h2 className="text-2xl font-bold mb-8 text-[#1B3B2F]">
+      <h2 className="text-2xl font-bold mb-8 text-green-900">
         Activity Timeline
       </h2>
       <div className="flex justify-between">
@@ -56,7 +56,7 @@ const Timeline = () => {
             <ChevronDown size={18} />
           </div>
         </div>
-        <div className="relative w-full max-w-[200px]">
+        <div className="relative w-full max-w-50">
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}

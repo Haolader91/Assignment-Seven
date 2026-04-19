@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { toast } from "react-hot-toast";
 import {
@@ -12,13 +12,19 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { TimelineContext } from "../context/store";
-import friendsData from "/public/FriendsData.json";
+// import friendsData from "/public/FriendsData.json";
 
 const FriendDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addActivity } = useContext(TimelineContext);
 
+  const [friendsData, setFriendsData] = useState([]);
+  useEffect(() => {
+    fetch("/FriendsData.json")
+      .then((res) => res.json())
+      .then((data) => setFriendsData(data));
+  }, []);
   const friend = friendsData.find((f) => f.id === parseInt(id));
 
   const handleCheckIn = (type) => {
@@ -53,7 +59,7 @@ const FriendDetails = () => {
       <div className="max-w-6xl mx-auto">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-slate-500 mb-8 hover:text-[#1B3B2F] transition-colors font-medium"
+          className="flex items-center gap-2 text-slate-500 mb-8 hover:text-green-900 transition-colors font-medium"
         >
           <ArrowLeft size={20} /> Back to Friends
         </button>
@@ -126,7 +132,7 @@ const FriendDetails = () => {
             </div>
 
             <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative">
-              <h3 className="text-[#1B3B2F] font-bold mb-4">
+              <h3 className="text-green-900 font-bold mb-4">
                 Relationship Goal
               </h3>
               <button className="absolute top-6 right-6 p-2 bg-slate-50 rounded-lg text-slate-400 hover:text-emerald-700">
@@ -141,7 +147,7 @@ const FriendDetails = () => {
             </div>
 
             <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
-              <h3 className="text-[#1B3B2F] font-bold mb-8 text-xl">
+              <h3 className="text-green-900 font-bold mb-8 text-xl">
                 Quick Check-In
               </h3>
               <div className="grid grid-cols-3 gap-6">
