@@ -88,6 +88,15 @@ const FriendDetails = () => {
               <p className="text-slate-500 italic text-sm mb-2">
                 "{friend.bio}"
               </p>
+              {/* ------------------ */}
+              <div className="mt-4 pt-4 border-t border-slate-50 w-full">
+                <p className="text-slate-400 text-[10px] uppercase font-bold tracking-widest mb-1">
+                  Email
+                </p>
+                <p className="text-slate-700 font-semibold text-sm break-all">
+                  {friend.email}
+                </p>
+              </div>
             </div>
 
             <div className="space-y-3">

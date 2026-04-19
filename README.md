@@ -34,3 +34,7 @@ It also includes a summary section and a simple dashboard UI.
 ## Author
 
 Made with React and Tailwind CSS
+
+git repository: https://github.com/Haolader91/Assignment-Seven
+
+live link: https://my-assignment-seventh.netlify.app/

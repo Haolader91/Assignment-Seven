@@ -33,7 +33,8 @@ const FriendsCard = ({ friends, setFriends }) => {
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto px-6 py-10">
-        <h2 className="text-xl font-bold mb-6">Loading...</h2>
+        <span className="loading loading-bars loading-lg"></span>
+        <span className="loading loading-bars loading-xl"></span>
       </div>
     );
   }
